@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdtbcpquittsn"]
+
+[ext_resource type="Script" path="res://hud.gd" id="1_s58q0"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_s58q0")
+
+[node name="CurrentLevel" type="Label" parent="."]
+offset_left = 20.0
+offset_top = 34.0
+offset_right = 148.0
+offset_bottom = 60.0
+text = "Level 1"
+
+[node name="GemsLabel" type="Label" parent="."]
+offset_left = 20.0
+offset_top = 60.0
+offset_right = 82.0
+offset_bottom = 86.0
+text = "Gems: 0"

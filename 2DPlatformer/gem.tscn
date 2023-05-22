@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://x7v36fw84m6b"]
+
+[ext_resource type="Texture2D" uid="uid://gnaas682b0pi" path="res://monochrome_tilemap_transparent.png" id="1_686x6"]
+[ext_resource type="Script" path="res://gem.gd" id="1_p4jsj"]
+[ext_resource type="AudioStream" uid="uid://cpqi0shthmp8b" path="res://gem.wav" id="3_uyuj4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c2500"]
+size = Vector2(12, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j84m8"]
+atlas = ExtResource("1_686x6")
+region = Rect2(34, 68, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xa8x"]
+atlas = ExtResource("1_686x6")
+region = Rect2(34, 85, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6lx3k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j84m8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xa8x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Gem" type="Area2D"]
+script = ExtResource("1_p4jsj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_c2500")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6lx3k")
+
+[node name="CollectedSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_uyuj4")
+volume_db = 2.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="CollectedSfx" to="." method="_on_collected_sfx_finished"]

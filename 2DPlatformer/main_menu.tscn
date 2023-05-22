@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://cejg5kc1r6ukb"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_4kdxf"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_4kdxf")
+
+[node name="TitleLabel" type="Label" parent="."]
+offset_top = 51.0
+offset_right = 1150.0
+offset_bottom = 93.0
+theme_type_variation = &"HeaderLarge"
+text = "My First 2D Game"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+offset_left = 518.0
+offset_top = 408.0
+offset_right = 656.0
+offset_bottom = 460.0
+text = "Sprites by Kenney
+Music by Ted Kerr
+Game by Nelio Quibe"
+vertical_alignment = 1
+
+[node name="Options" type="VFlowContainer" parent="."]
+offset_left = 518.0
+offset_top = 194.0
+offset_right = 660.0
+offset_bottom = 301.0
+
+[node name="StartButton" type="Button" parent="Options"]
+layout_mode = 2
+text = "Start"
+
+[node name="FullscrenButton" type="Button" parent="Options"]
+layout_mode = 2
+text = "Toggle Fullscreen"
+
+[node name="QuitButton" type="Button" parent="Options"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="Options/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Options/FullscrenButton" to="." method="_on_fullscren_button_pressed"]
+[connection signal="pressed" from="Options/QuitButton" to="." method="_on_quit_button_pressed"]
